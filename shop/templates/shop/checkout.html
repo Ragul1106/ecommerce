@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - My Store{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>Checkout</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="customer_name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="customer_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="customer_email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="customer_email" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" name="address" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg">Place Order</button>
+        </form>
+    </div>
+    
+    <div class="col-md-4">
+        <h3>Order Summary</h3>
+        <ul class="list-group">
+            {% for item in cart_items %}
+            <li class="list-group-item d-flex justify-content-between">
+                <span>{{ item.product.name }} x {{ item.quantity }}</span>
+                <strong>${{ item.total_price }}</strong>
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between">
+                <strong>Total:</strong>
+                <strong>${{ total_amount }}</strong>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

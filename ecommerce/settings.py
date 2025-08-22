@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ngcg2$20k8a#&3lo6y%2l1kkk_li$fjn*s*p2=7b^j5-a5eiyi
 DEBUG = os.getenv('DJANGO_DEBUG', 'True').lower() == 'true'
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://ecommerce-p6yo.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
